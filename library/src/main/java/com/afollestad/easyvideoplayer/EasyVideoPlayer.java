@@ -705,7 +705,10 @@ public class EasyVideoPlayer extends FrameLayout
     if (mCallback != null) mCallback.onBuffering(percent);
     if (mSeeker != null) {
       if (percent == 100) mSeeker.setSecondaryProgress(0);
-      else mSeeker.setSecondaryProgress(mSeeker.getMax() * (percent / 100));
+      else {
+        int result = (int)(mSeeker.getMax() * ((float)percent / 100));
+        mSeeker.setSecondaryProgress(result);
+      }
     }
   }
 
